@@ -1,0 +1,20 @@
+name: user_srv
+port: 0
+ip: 10.3.189.2
+
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: 123456
+  db: 2201a
+
+
+
+consul:
+  consul_host: 127.0.0.1
+  consul_port: 8500
+  tags:
+    - user_srv
+    - goods
+    - wujuan
