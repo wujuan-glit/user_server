@@ -9,7 +9,7 @@ type RegisterUserForm struct {
 
 // 更新
 type UpdateUserForm struct {
-	Id       string `form:"id" json:"id" xml:"id" binding:"required"`
+	//Id       string `form:"id" json:"id" xml:"id" binding:"required"`
 	NickName string `form:"nickname" json:"nickname" xml:"nickname" binding:"required"`
 	Gender   string `form:"gender" json:"gender" xml:"gender" binding:"required"`
 	Birthday string `form:"birthday" json:"birthday" xml:"birthday" binding:"required"`

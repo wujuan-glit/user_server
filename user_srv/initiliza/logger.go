@@ -3,7 +3,6 @@ package initiliza
 import "go.uber.org/zap"
 
 func NewLogger() (*zap.Logger, error) {
-
 	//读取环境变量中的值
 	config := GetSystemConfig()
 
@@ -24,7 +23,6 @@ func NewLogger() (*zap.Logger, error) {
 		}
 		return cfg, nil
 	}
-
 }
 
 // 初始化日志文件

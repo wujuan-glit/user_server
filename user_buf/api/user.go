@@ -2,13 +2,17 @@ package api
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strconv"
+	"time"
 	"user/proto"
 	"user/user_buf/forms"
 	"user/user_buf/global"
+	"user/user_buf/model"
+	"user/user_buf/server"
 )
 
 //我们bff层需要遵循restful风格
@@ -53,11 +57,13 @@ func UpdateUserInfo(c *gin.Context) {
 		ReturnErrorJson(c, err)
 		return
 	}
-	id, _ := strconv.Atoi(form.Id)
+
+	userId, _ := c.Get("user_id")
+
 	birthday, _ := strconv.Atoi(form.Birthday)
 
 	info, err := global.ServerConn.UpdateUserInfo(context.Background(), &proto.UpdateUserInfoReq{
-		Id:       int32(id),
+		Id:       userId.(int32),
 		NickName: form.NickName,
 		Gender:   form.Gender,
 		BirthDay: uint64(birthday),
@@ -108,15 +114,15 @@ func Login(c *gin.Context) {
 		return
 	}
 	//校验图形验证码是否正确
-	verify := store.Verify(form.CaptchaId, form.Captcha, false)
-	if !verify {
-		c.JSON(http.StatusOK, gin.H{
-			"code": 0,
-			"msg":  "图形验证码不正确",
-			"data": nil,
-		})
-		return
-	}
+	//verify := store.Verify(form.CaptchaId, form.Captcha, false)
+	//if !verify {
+	//	c.JSON(http.StatusOK, gin.H{
+	//		"code": 0,
+	//		"msg":  "图形验证码不正确",
+	//		"data": nil,
+	//	})
+	//	return
+	//}
 	info, err := global.ServerConn.GetUserByMobile(context.Background(), &proto.MobileReq{Mobile: form.Mobile})
 	if err != nil {
 		HandleGrpcErrorToHttp(c, err)
@@ -140,9 +146,52 @@ func Login(c *gin.Context) {
 		return
 
 	}
+
+	user := model.User{
+		ID:        int32(info.Id),
+		CreatedAt: time.Time{},
+		UpdatedAt: time.Time{},
+		DeletedAt: time.Time{},
+		Password:  info.Password,
+		NickName:  info.UserName,
+		Mobile:    info.Mobile,
+		Role:      info.Role,
+		Birthday:  info.Birthday,
+		Gender:    info.Gender,
+	}
+	marshal, err := json.Marshal(user)
+	if err != nil {
+		ReturnErrorJson(c, err)
+		return
+	}
+	//生成token
+
+	token, err := server.GenJwtToken(string(marshal))
+	if err != nil {
+		ReturnErrorJson(c, err)
+		return
+	}
 	c.JSON(http.StatusOK, gin.H{
-		"code": 0,
-		"msg":  "登录成功",
-		"data": info,
+		"code":                      0,
+		"msg":                       "登录成功",
+		"access_token":              token.AccessToken,
+		"refresh_token":             token.RefreshToken,
+		"access_token_expire_time":  global.ServerConfig.Jwt.AccessExpire,
+		"refresh_token_expire_time": global.ServerConfig.Jwt.RefreshExpire,
+	})
+}
+func ReFresh(c *gin.Context) {
+	refresh_token := c.PostForm("refresh_token")
+
+	token, err := server.RefreshAccessToken(refresh_token)
+	if err != nil {
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{
+		"code":                      0,
+		"msg":                       "登录成功",
+		"access_token":              token,
+		"refresh_token_expire_time": global.ServerConfig.Jwt.RefreshExpire,
 	})
 }

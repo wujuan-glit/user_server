@@ -67,7 +67,4 @@ func InitConn() {
 
 	zap.S().Info("服务注销成功")
 
-	if err != nil {
-		zap.S().Panic("grpc启动失败")
-	}
 }

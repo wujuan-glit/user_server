@@ -5,6 +5,7 @@ import (
 	"crypto/sha512"
 	"fmt"
 	"github.com/anaskhan96/go-password-encoder"
+	"go.uber.org/zap"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 	"gorm.io/gorm"
@@ -105,7 +106,7 @@ func ModelToResponse(user model.User) proto.UserInfoResp { // grpc message nil
 
 // GetUserList 获取用户列表
 func (u *UserServer) GetUserList(ctx context.Context, in *proto.PageInfo) (*proto.UserListResp, error) {
-
+	zap.S().Info("列表获取")
 	//链式操作
 
 	userList := []model.User{}

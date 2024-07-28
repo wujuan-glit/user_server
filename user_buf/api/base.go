@@ -91,6 +91,7 @@ func HandleGrpcErrorToHttp(c *gin.Context, err error) {
 		}
 	}
 }
+
 func GetPage(c *gin.Context) (int, int, int) {
 	page := c.Query("page")
 	limit := c.Query("limit")
