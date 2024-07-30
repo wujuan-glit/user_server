@@ -1,9 +1,18 @@
-name: user_srv
-port: 8081
 
-mysql:
+name: user_srv
+port: 0
+ip: 127.0.0.1
+
+jwt:
+  key: 123456
+  access_expire: 86400
+  refresh_expire: 86400
+
+consul:
   host: 127.0.0.1
-  port: 3306
-  user: root
-  password: 123456
-  db: 2201a
+  port: 8500
+  name: user_srv
+  tags:
+    - user_srv
+    - goods
+    - wujuan

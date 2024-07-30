@@ -9,11 +9,9 @@ mysql:
   password: 123456
   db: 2201a
 
-
-
 consul:
-  consul_host: 127.0.0.1
-  consul_port: 8500
+  host: 127.0.0.1
+  port: 8500
   tags:
     - user_srv
     - goods

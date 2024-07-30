@@ -1,28 +1,8 @@
 
-name: user_srv
-port: 0
-ip: 127.0.0.1
-
-
-mysql:
-  host: 127.0.0.1
-  port: 3306
-  user: root
-  password: 123456
-  db: 2201a
-
-jwt:
-  key: 123456
-  access_expire: 86400
-  refresh_expire: 86400
-
-
-
-consul:
-  host: 127.0.0.1
-  port: 8500
-  name: user_srv
-  tags:
-    - user_srv
-    - goods
-    - wujuan
+nacos:
+  namespace: b46f956b-7cf9-464a-85d4-5c58818bbbe7
+  server_port: 8848
+  server_ip: 127.0.0.1
+  server_grpc_port: 9848
+  data_id: user_bff.json
+  group: user_bff_group

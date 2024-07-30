@@ -1,18 +1,8 @@
-name: user_srv
-port: 0
-ip: 10.3.189.2
 
-mysql:
-  host: 127.0.0.1
-  port: 3306
-  user: root
-  password: 123456
-  db: 2201a
-
-consul:
-  host: 127.0.0.1
-  port: 8500
-  tags:
-    - user_srv
-    - goods
-    - wujuan
+nacos:
+  namespace: af67806a-0981-480b-a676-df720fa23364
+  server_port: 8848
+  server_ip: 127.0.0.1
+  server_grpc_port: 9848
+  data_id: user_srv.json
+  group: user_srv_group
