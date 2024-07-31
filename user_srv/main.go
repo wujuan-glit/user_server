@@ -1,7 +1,11 @@
 package main
 
-import "user/user_srv/initiliza"
+import (
+	"log"
+	"user/user_srv/initiliza"
+)
 
 func main() {
+	log.Println("123")
 	initiliza.Init()
 }

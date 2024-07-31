@@ -15,6 +15,14 @@ import (
 	"user/user_buf/server"
 )
 
+func Health(c *gin.Context) {
+
+	c.JSON(http.StatusOK, gin.H{
+		"code": 200,
+		"msg":  "登录成功",
+	})
+}
+
 //我们bff层需要遵循restful风格
 //路由尽量不要出现动词,出现的是名词
 // get（获取数据） post（添加数据） put（修改数据） delete（删除数据）

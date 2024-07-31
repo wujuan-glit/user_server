@@ -13,6 +13,7 @@ import (
 
 // 初始化配置文件
 func InitConfig() {
+
 	v := viper.New()
 
 	config := GetSystemConfig()

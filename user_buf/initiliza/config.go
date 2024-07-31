@@ -7,7 +7,6 @@ import (
 	"github.com/nacos-group/nacos-sdk-go/v2/vo"
 	"github.com/spf13/viper"
 	"go.uber.org/zap"
-	"log"
 	"user/user_buf/global"
 )
 
@@ -23,10 +22,6 @@ func InitConfig() {
 	if err := v.Unmarshal(&global.ServerConfig); err != nil {
 		zap.S().Panic("配置文件获取失败")
 	}
-
-	InitNacos()
-
-	log.Println("配置文件", global.ServerConfig)
 
 }
 
@@ -49,14 +44,18 @@ func InitNacos() {
 			Scheme:      "http",
 		},
 	}
-	client, _ := clients.CreateConfigClient(map[string]interface{}{
+	global.NacosClient, _ = clients.CreateConfigClient(map[string]interface{}{
 		"serverConfigs": serverConfigs,
 		"clientConfig":  clientConfig,
 	})
-	content, _ := client.GetConfig(vo.ConfigParam{
+
+}
+
+// 获取nacos中的配置文件
+func GetNacosConfig() {
+	content, _ := global.NacosClient.GetConfig(vo.ConfigParam{
 		DataId: global.ServerConfig.Nacos.DataId,
 		Group:  global.ServerConfig.Nacos.Group})
 
 	json.Unmarshal([]byte(content), &global.ServerConfig)
-
 }

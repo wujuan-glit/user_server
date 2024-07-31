@@ -4,6 +4,7 @@ type UserServer struct {
 	Name   string `json:"name"`
 	Port   int    `json:"port"`
 	Ip     string `json:"ip"`
+	PubIp  string `json:"pub_ip"`
 	Jwt    Jwt    `json:"jwt"`
 	Consul Consul `json:"consul"`
 	Nacos  Nacos  `mapstructure:"nacos" json:"nacos"`

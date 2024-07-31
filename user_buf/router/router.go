@@ -20,5 +20,6 @@ func InitRouter() *gin.Engine {
 	{
 		v2.GET("", api.GetCaptcha)
 	}
+	r.GET("/health", api.Health)
 	return r
 }

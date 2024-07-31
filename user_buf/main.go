@@ -15,7 +15,7 @@ func main() {
 
 	r := router.InitRouter()
 
-	err := r.Run(fmt.Sprintf("%s:%d", global.ServerConfig.Ip, 8888))
+	err := r.Run(fmt.Sprintf("%s:%d", global.ServerConfig.PubIp, global.ServerConfig.Port))
 	if err != nil {
 		zap.S().Info("启动失败", err)
 	}

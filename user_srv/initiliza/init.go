@@ -27,7 +27,7 @@ func Init() {
 
 	InitConfig()
 
-	global.ServerID = fmt.Sprintf("%s", uuid.NewV4()) //唯一的用户ID
+	global.ServerID = fmt.Sprintf("%s", uuid.NewV4()) //唯一的ID
 
 	InitFreePort()
 
