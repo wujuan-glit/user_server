@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+
+option go_package=".;order";
+
+
+//定义订单微服务
+service Order {
+  //购物车
+  rpc CartItemList(UserInfo) returns(CartItemListResp);//获取用户购物车列表
+  rpc CreateCartItem(CartItemReq) returns(ShopCartInfoResp);//添加购物车
+  rpc UpdateCartItem(CartItemReq) returns(Empty);//修改购物车记录
+
+  //订单
+  rpc CreateOrder(OrderReq) returns(OrderInfoResp);//创建订单
+  rpc OrderList(OrderFilterReq) returns (OrderListResp); // 订单列表
+  rpc OrderDetail(OrderReq) returns (OrderInfoDetailResp); // 订单详情
+  rpc UpdateOrder(UpdateOrderInfo) returns (Empty); // 修改订单状态
+
+}
+message Empty{}
+//定义用户信息
+message UserInfo {
+  string ping = 1;
+}
+
+message Response {
+  int32 id = 1;//用户主键id
+}
+
+//定义购物车商品信息
+message CartItemListResp{
+  int32 total=1;
+  repeated ShopCartInfoResp info=2;
+}
+//购物车单条信息
+message ShopCartInfoResp{
+  int32 id=1;
+  int32 userId=2;
+  int32 goodsId =3;
+  int32 nums=4;
+  bool checked=5;
+}
+
+//定义添加购物车商品信息
+message CartItemReq{
+  int32 id=1;
+  int32 userId=2;
+  int32 goodsId =3;
+  string goodsName=4;
+  string goodsPrice=5;
+  int32 nums=7;
+  bool checked=8;
+}
+
+//订单请求体
+message OrderReq{
+  int32 id=1;
+  int32 userId=2;
+  string address=3;
+  string name=4;
+  string mobile=5;
+  string post=6;//订单备注
+
+}
+
+//返回顶订单的信息
+message OrderInfoResp{
+  int32 id=1;
+  int32 userId=2;
+  string orderSn=3;
+  int32 payType=4;
+  int32 status=5;
+  string post=6;
+  float total=7;
+  string address=8;
+  string name=9;
+  string mobile=10;
+}
+
+//订单列表
+message OrderFilterReq {
+  int32 userId = 1;
+  int32 pages = 2;
+  int32 pagePerNums = 3;
+  enum PayTypes {
+    YUE = 0;
+    ALIPAY = 1;
+    WECHATPAY = 2;
+
+  }
+  PayTypes   payType  = 4;
+  int32 status = 5;
+}
+
+
+//订单列表返回体
+message OrderListResp {
+  int32 total = 1;
+  repeated OrderInfoResp data = 2;
+}
+
+//订单详情
+message OrderInfoDetailResp {
+  OrderInfoResp orderInfo = 1;
+  repeated OrderItemResponse goods = 2;
+}
+
+message OrderItemResponse {
+  int32 id = 1;
+  int32 orderId = 2;
+  int32 goodsId = 3;
+  string goodsName = 4;
+  string goodsImage = 5;
+  float goodsPrice = 6;
+  int32 nums = 7;
+}
+
+message UpdateOrderInfo {
+  int32 id = 1;
+  int32 payType = 2;
+  int32 status = 3;
+  string tradeNo = 4;
+}

@@ -1,0 +1,21 @@
+{
+  "name": "user_bff",
+  "port": 8888,
+  "ip": "127.0.0.1",
+  "pub_ip": "10.3.189.2",
+  "jwt": {
+    "key": 123456,
+    "access_expire": 86400,
+    "refresh_expire": 86400
+  },
+  "consul": {
+    "host": "127.0.0.1",
+    "port": 8500,
+    "name": "user_srv",
+    "tags": [
+      "user_bff",
+      "goods",
+      "wujuan"
+    ]
+  }
+}

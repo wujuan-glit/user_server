@@ -1,8 +1,0 @@
-
-nacos:
-  namespace: b46f956b-7cf9-464a-85d4-5c58818bbbe7
-  server_port: 8848
-  server_ip: 127.0.0.1
-  server_grpc_port: 9848
-  data_id: user_bff.json
-  group: user_bff_group
