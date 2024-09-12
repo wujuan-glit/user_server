@@ -1,0 +1,8 @@
+
+nacos:
+  namespace: b8c6f240-7535-4706-8b59-23db97f9c2f5
+  server_port: 8848
+  server_ip: 127.0.0.1
+  server_grpc_port: 9848
+  data_id: order_bff
+  group: dev

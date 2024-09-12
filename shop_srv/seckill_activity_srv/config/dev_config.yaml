@@ -1,0 +1,8 @@
+
+nacos:
+  namespace: bef47282-b748-4829-91dc-1f43a22ad185
+  server_port: 8848
+  server_ip: 127.0.0.1
+  server_grpc_port: 9848
+  data_id: userop_srv
+  group: dev

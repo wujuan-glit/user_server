@@ -1,0 +1,15 @@
+{"level":"info","ts":1725010108.117134,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725010123.402486,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725068709.3096082,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725246614.6668806,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"panic","ts":1725246614.6699219,"caller":"order_bff/main.go:24","msg":"启动失败","stacktrace":"main.main.func1\n\tD:/wujuan/professional/mygo/src/heigh5/zuoye/0720/user/shop_bff/order_bff/main.go:24"}
+{"level":"info","ts":1725246719.0071337,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725247025.843271,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725247235.7796812,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725247320.7669797,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725249140.0340505,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725249501.4937544,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725249693.9829123,"caller":"alipay/alipay.go:329","msg":"未处理交易状态: "}
+{"level":"info","ts":1725250593.0170412,"caller":"alipay/alipay.go:509","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725368474.5057106,"caller":"alipay/alipay.go:517","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}
+{"level":"info","ts":1725368988.841171,"caller":"alipay/alipay.go:517","msg":"delay_order_consumer errorthe topic=alipay route info not found, it may not exist"}

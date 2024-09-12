@@ -1,0 +1,8 @@
+
+nacos:
+  namespace: af67806a-0981-480b-a676-df720fa23364
+  server_port: 8848
+  server_ip: 127.0.0.1
+  server_grpc_port: 9848
+  data_id: user_srv.json
+  group: user_srv_group
